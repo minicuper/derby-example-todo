@@ -1,0 +1,23 @@
+{
+  "name": "derby-example-todo",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zag2art/derby-example-todo.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zag2art/derby-example-todo/issues"
+  },
+  "homepage": "https://github.com/zag2art/derby-example-todo",
+  "dependencies": {
+    "derby": "0.6.0-alpha5",
+    "derby-starter": "0.1.2"
+  }
+}

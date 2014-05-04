@@ -1,0 +1,57 @@
+<import: src="todo">
+
+<Body:>
+  <section id="todoapp">
+    <view name="header"/>
+    <view name="main"/>
+    <view name="footer"/>
+  </section>
+
+<header:>
+  <header id="header">
+    <h1>todos</h1>
+    <form id="todo-form" on-submit="addTodo(_page.newTodo)">
+      <input id="new-todo" placeholder="What needs to be done?" autofocus value="{{_page.newTodo}}">
+    </form>
+  </header>
+
+<footer:>
+  <footer id="footer">
+      <span id="todo-count"><strong>{{_page.counters.active}} </strong>
+        <span>items left</span>
+      </span>
+    <ul id="filters">
+      <li><a href="/"           class="{{if $render.url==='/'         }}selected{{/}}">All</a></li>
+      <li><a href="/active"     class="{{if $render.url==='/active'   }}selected{{/}}">Active</a></li>
+      <li><a href="/completed"  class="{{if $render.url==='/completed'}}selected{{/}}">Completed</a></li>
+    </ul>
+    <button id="clear-completed" on-click="clearCompleted()" class="{{if _page.counters.completed==0}}hidden{{/}}">
+      Clear completed ({{_page.counters.completed}})
+    </button>
+  </footer>
+
+<main:>
+  <section id="main">
+    <input id="toggle-all" type="checkbox">
+    <label for="toggle-all">Mark all as complete</label>
+    <view name="todos"/>
+  </section>
+
+
+<todos:>
+  <ul id="todo-list">
+    {{each _page.todos as #todo}}
+    <li class="{{if #todo.completed}}completed{{/}} {{if _page.edit.id === #todo.id}}editing{{/}}">
+
+      <div class="view">
+        <input class="toggle" type="checkbox" checked="{{#todo.completed}}">
+        <label on-dblclick="editTodo(#todo)">{{#todo.text}}</label>
+        <button class="destroy" on-click="delTodo(#todo.id)"> </button>
+      </div>
+      <form on-submit="doneEditing(_page.edit)">
+        <input id="{{#todo.id}}" class="edit" value="{{_page.edit.text}}" on-keyup="cancelEditing($event)">
+      </form>
+
+    </li>
+    {{/each}}
+  </ul>
