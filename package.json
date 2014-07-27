@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/zag2art/derby-example-todo",
   "dependencies": {
-    "derby": "0.6.0-alpha5",
-    "derby-starter": "0.1.2"
+    "derby": "0.6.0-alpha23",
+    "derby-starter": "0.2.0"
   }
 }
